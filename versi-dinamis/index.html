@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f8f5">
+  <meta name="description" content="Sewa mobil nyaman dan terpercaya untuk perjalanan Anda. Pilih armada RodaRent dengan harga transparan.">
+  <title>RodaRent | Versi Dinamis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261028-5">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#" aria-label="RodaRent beranda">
+        <img class="brand-mark" src="../assets/rodarent-logo.png?v=20261028-1" alt="">RodaRent
+      </a>
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="#armada">Armada</a><a href="#keunggulan">Keunggulan</a><a href="#cara-sewa">Cara Sewa</a>
+        <a href="pesanan.html#cek">Cek Pesanan</a>
+      </nav>
+      <div class="nav-action">
+        <a class="phone-link" href="#kontak">Butuh bantuan?</a>
+        <a class="button button-primary" href="#armada">Cari Mobil <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-panel">
+          <img class="hero-photo" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" alt="Mobil siap menemani perjalanan" fetchpriority="high">
+          <div class="hero-copy">
+            <span class="eyebrow">Teman perjalananmu</span>
+            <h1>Sewa mobil, <span class="typing-text" id="typing-text" aria-hidden="true">lebih nyaman.</span><span class="sr-only">untuk perjalanan yang lebih nyaman.</span></h1>
+            <p>Pilih mobil favoritmu dan nikmati perjalanan dengan harga transparan. Tinggal pilih, kami siapkan.</p>
+            <a class="button button-light" href="#armada">Lihat pilihan mobil <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <div class="hero-stats">
+              <div class="hero-stat"><strong>6 mobil</strong><span>Pilihan armada</span></div>
+              <div class="hero-stat"><strong>4 kategori</strong><span>Sesuaikan kebutuhan</span></div>
+              <div class="hero-stat"><strong>Harga harian</strong><span>Tertera di awal</span></div>
+            </div>
+          </div>
+        </div>
+        <form class="booking-bar" id="search-form">
+          <div class="booking-field">
+            <label for="location">Lokasi penjemputan</label>
+            <select id="location" name="location">
+              <option value="all">Semua lokasi</option>
+              <option value="jakarta">Jakarta</option>
+              <option value="bandung">Bandung</option>
+              <option value="yogyakarta">Yogyakarta</option>
+              <option value="bali">Bali</option>
+            </select>
+          </div>
+          <div class="booking-field">
+            <label for="pickup-date">Tanggal mulai</label>
+            <input id="pickup-date" name="pickup-date" type="date">
+          </div>
+          <div class="booking-field">
+            <label for="return-date">Tanggal selesai</label>
+            <input id="return-date" name="return-date" type="date">
+          </div>
+          <button class="button button-primary" type="submit">Cari mobil <svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="2"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="armada">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow section-eyebrow">Pilihan untukmu</span><h2>Temukan mobil yang pas</h2><p>Armada terawat, harga jelas, siap menemani setiap perjalanan.</p></div>
+          <a class="text-link" href="#cara-sewa">Cara menyewa <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="filters" role="group" aria-label="Filter jenis mobil">
+          <button class="filter active" type="button" data-filter="all">Semua mobil</button>
+          <button class="filter" type="button" data-filter="city-car">City car</button>
+          <button class="filter" type="button" data-filter="suv">SUV</button>
+          <button class="filter" type="button" data-filter="mpv">MPV</button>
+          <button class="filter" type="button" data-filter="premium">Premium</button>
+        </div>
+        <div class="car-grid" id="car-grid" aria-live="polite">
+          <article class="car-card" data-category="mpv" data-location="jakarta">
+            <div class="car-image-wrap"><img class="car-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/2018_Suzuki_Ertiga_GX_%28front%29%2C_Batu_City.jpg/960px-2018_Suzuki_Ertiga_GX_%28front%29%2C_Batu_City.jpg" alt="Suzuki Ertiga, tampak depan" loading="lazy"><span class="car-tag">Terlaris</span></div>
+            <div class="car-info"><div class="car-title-row"><div><h3>Suzuki Ertiga</h3><p>MPV &bull; 1.5L</p></div><div class="rating"><span>&#9733;</span> 4.9</div></div><div class="car-specs"><span class="spec"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c.5-3.4 3.5-5.5 7.5-5.5s7 2.1 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>7 kursi</span><span class="spec"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h11v12H4zM15 10h3l2 3v5h-5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.5" cy="18" r="1.5" fill="currentColor"/><circle cx="17.5" cy="18" r="1.5" fill="currentColor"/></svg>Automatic</span><span class="spec">&#10052; AC</span></div><div class="car-bottom"><div class="price">Rp350rb <small>/ hari</small></div><button class="button button-dark rent-button" type="button" data-car="Suzuki Ertiga" data-price="Rp350.000">Pilih mobil</button></div></div>
+          </article>
+          <article class="car-card" data-category="city-car" data-location="jakarta">
+            <div class="car-image-wrap"><img class="car-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/2016_Honda_Brio_Satya_E_%28facelift%29_%28front%29%2C_West_Surabaya.jpg/960px-2016_Honda_Brio_Satya_E_%28facelift%29_%28front%29%2C_West_Surabaya.jpg" alt="Honda Brio Satya, tampak depan" loading="lazy"><span class="car-tag">Irit &amp; lincah</span></div>
+            <div class="car-info"><div class="car-title-row"><div><h3>Honda Brio</h3><p>City car &bull; 1.2L</p></div><div class="rating"><span>&#9733;</span> 4.8</div></div><div class="car-specs"><span class="spec"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c.5-3.4 3.5-5.5 7.5-5.5s7 2.1 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>5 kursi</span><span class="spec"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h11v12H4zM15 10h3l2 3v5h-5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.5" cy="18" r="1.5" fill="currentColor"/><circle cx="17.5" cy="18" r="1.5" fill="currentColor"/></svg>Automatic</span><span class="spec">&#10052; AC</span></div><div class="car-bottom"><div class="price">Rp275rb <small>/ hari</small></div><button class="button button-dark rent-button" type="button" data-car="Honda Brio" data-price="Rp275.000">Pilih mobil</button></div></div>
+          </article>
+          <article class="car-card" data-category="suv" data-location="bandung">
+            <div class="car-image-wrap"><img class="car-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/2022_Honda_HR-V_1.5_E_%28Indonesia%29_front_view.jpg/960px-2022_Honda_HR-V_1.5_E_%28Indonesia%29_front_view.jpg" alt="Honda HR-V generasi terbaru, tampak depan" loading="lazy"><span class="car-tag">Favorit keluarga</span></div>
+            <div class="car-info"><div class="car-title-row"><div><h3>Honda HR-V e:HEV RS</h3><p>SUV &bull; 1.5L Hybrid</p></div><div class="rating"><span>&#9733;</span> 4.9</div></div><div class="car-specs"><span class="spec"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c.5-3.4 3.5-5.5 7.5-5.5s7 2.1 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>5 kursi</span><span class="spec"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h11v12H4zM15 10h3l2 3v5h-5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.5" cy="18" r="1.5" fill="currentColor"/><circle cx="17.5" cy="18" r="1.5" fill="currentColor"/></svg>Automatic</span><span class="spec">&#10052; AC</span></div><div class="car-bottom"><div class="price">Rp450rb <small>/ hari</small></div><button class="button button-dark rent-button" type="button" data-car="Honda HR-V e:HEV RS" data-price="Rp450.000">Pilih mobil</button></div></div>
+          </article>
+          <article class="car-card" data-category="mpv" data-location="yogyakarta">
+            <div class="car-image-wrap"><img class="car-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/2022_Toyota_Kijang_Innova_Zenix_V_%28front%29.jpg/960px-2022_Toyota_Kijang_Innova_Zenix_V_%28front%29.jpg" alt="Toyota Kijang Innova Zenix, tampak depan" loading="lazy"><span class="car-tag">Lega &amp; nyaman</span></div>
+            <div class="car-info"><div class="car-title-row"><div><h3>Toyota Innova Zenix</h3><p>MPV &bull; 2.0L</p></div><div class="rating"><span>&#9733;</span> 5.0</div></div><div class="car-specs"><span class="spec"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c.5-3.4 3.5-5.5 7.5-5.5s7 2.1 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>7 kursi</span><span class="spec"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h11v12H4zM15 10h3l2 3v5h-5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.5" cy="18" r="1.5" fill="currentColor"/><circle cx="17.5" cy="18" r="1.5" fill="currentColor"/></svg>Automatic</span><span class="spec">&#10052; AC</span></div><div class="car-bottom"><div class="price">Rp650rb <small>/ hari</small></div><button class="button button-dark rent-button" type="button" data-car="Toyota Innova Zenix" data-price="Rp650.000">Pilih mobil</button></div></div>
+          </article>
+          <article class="car-card" data-category="suv" data-location="bali">
+            <div class="car-image-wrap"><img class="car-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Toyota_Rush_%28Front%29%2C_Jakarta%2C_Indonesia.jpg/960px-Toyota_Rush_%28Front%29%2C_Jakarta%2C_Indonesia.jpg" alt="Toyota Rush, tampak depan" loading="lazy"><span class="car-tag">Siap berpetualang</span></div>
+            <div class="car-info"><div class="car-title-row"><div><h3>Toyota Rush</h3><p>SUV &bull; 1.5L</p></div><div class="rating"><span>&#9733;</span> 4.8</div></div><div class="car-specs"><span class="spec"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c.5-3.4 3.5-5.5 7.5-5.5s7 2.1 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>7 kursi</span><span class="spec"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h11v12H4zM15 10h3l2 3v5h-5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.5" cy="18" r="1.5" fill="currentColor"/><circle cx="17.5" cy="18" r="1.5" fill="currentColor"/></svg>Manual</span><span class="spec">&#10052; AC</span></div><div class="car-bottom"><div class="price">Rp425rb <small>/ hari</small></div><button class="button button-dark rent-button" type="button" data-car="Toyota Rush" data-price="Rp425.000">Pilih mobil</button></div></div>
+          </article>
+          <article class="car-card" data-category="premium" data-location="jakarta">
+            <div class="car-image-wrap"><img class="car-image" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/2020_Toyota_Camry_2.5_%28Front_view%29.jpg/960px-2020_Toyota_Camry_2.5_%28Front_view%29.jpg" alt="Toyota Camry 2020, tampak depan" loading="lazy"><span class="car-tag">Premium</span></div>
+            <div class="car-info"><div class="car-title-row"><div><h3>Toyota Camry</h3><p>Premium &bull; 2.5L</p></div><div class="rating"><span>&#9733;</span> 5.0</div></div><div class="car-specs"><span class="spec"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 20c.5-3.4 3.5-5.5 7.5-5.5s7 2.1 7.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>5 kursi</span><span class="spec"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h11v12H4zM15 10h3l2 3v5h-5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.5" cy="18" r="1.5" fill="currentColor"/><circle cx="17.5" cy="18" r="1.5" fill="currentColor"/></svg>Automatic</span><span class="spec">&#10052; AC</span></div><div class="car-bottom"><div class="price">Rp1,2jt <small>/ hari</small></div><button class="button button-dark rent-button" type="button" data-car="Toyota Camry" data-price="Rp1.200.000">Pilih mobil</button></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" id="keunggulan">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow section-eyebrow">Bikin tenang di jalan</span><h2>Sewa mobil, lebih simpel</h2><p>Kami urus detailnya supaya kamu fokus menikmati perjalanan.</p></div></div>
+        <div class="benefit-grid">
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Mobil terawat</h3><p>Setiap mobil dicek dan dibersihkan sebelum diserahkan.</p></div></article>
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><h3>Proses cepat</h3><p>Pilih mobil dan jadwal, konfirmasi tanpa proses berbelit.</p></div></article>
+          <article class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4zM8 7V5h8v2M8 12h8m-8 3h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Harga transparan</h3><p>Harga sewa jelas dari awal, tanpa biaya tersembunyi.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cara-sewa">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow section-eyebrow">Mudah kok</span><h2>Tiga langkah, langsung jalan</h2><p>Mulai perjalananmu tanpa perlu repot.</p></div></div>
+        <div class="steps-grid">
+          <article class="step"><span class="step-number">01</span><h3>Pilih mobil &amp; jadwal</h3><p>Temukan mobil yang cocok dan tentukan tanggal perjalananmu.</p></article>
+          <article class="step"><span class="step-number">02</span><h3>Konfirmasi pesanan</h3><p>Hubungi tim kami untuk memastikan ketersediaan dan detail sewa.</p></article>
+          <article class="step"><span class="step-number">03</span><h3>Ambil kunci, berangkat!</h3><p>Mobil siap di lokasi dan waktu yang sudah disepakati.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="kontak" style="padding-bottom: 74px">
+      <div class="cta"><div><h2>Siap berangkat ke mana saja?</h2><p>Temukan mobil yang pas untuk cerita perjalananmu berikutnya.</p></div><a class="button button-light" href="#armada">Pilih mobil sekarang <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </section>
+  </main>
+
+  <dialog class="checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-title">
+    <div class="checkout-header">
+      <div>
+        <span class="eyebrow section-eyebrow" id="checkout-eyebrow">Satu langkah lagi</span>
+        <h2 id="checkout-title">Detail pemesanan</h2>
+      </div>
+      <button class="dialog-close" id="checkout-close" type="button" aria-label="Tutup">&times;</button>
+    </div>
+    <div id="checkout-content">
+      <div class="checkout-summary">
+        <div><span>Mobil</span><strong id="checkout-car"></strong></div>
+        <div><span>Periode sewa</span><strong id="checkout-dates"></strong></div>
+        <div><span>Durasi</span><strong id="checkout-duration"></strong></div>
+        <div class="checkout-total"><span>Total pesanan</span><strong id="checkout-total"></strong></div>
+      </div>
+      <form id="checkout-form">
+        <label class="checkout-label" for="customer-name">Nama lengkap</label>
+        <input class="checkout-input" id="customer-name" name="customer-name" autocomplete="name" required>
+        <label class="checkout-label" for="customer-phone">Nomor WhatsApp</label>
+        <input class="checkout-input" id="customer-phone" name="customer-phone" type="tel" autocomplete="tel" required>
+        <fieldset class="payment-options">
+          <legend>Metode pembayaran</legend>
+          <label class="payment-option"><input type="radio" name="payment-method" value="Virtual Account" checked><span><strong>Virtual Account</strong><small>BCA, BNI, BRI, Mandiri</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment-method" value="QRIS"><span><strong>QRIS</strong><small>Scan kode merchant SECUTIXE STORE</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment-method" value="E-wallet"><span><strong>E-wallet</strong><small>GoPay, OVO, DANA, ShopeePay</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment-method" value="Kartu kredit / debit"><span><strong>Kartu kredit / debit</strong><small>Visa, Mastercard, atau JCB</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment-method" value="PayLater"><span><strong>PayLater / cicilan</strong><small>Contoh: GoPay Later, Kredivo, atau SPayLater</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment-method" value="Bayar saat pengambilan"><span><strong>Bayar saat pengambilan</strong><small>Bayar langsung ketika mengambil mobil</small></span></label>
+        </fieldset>
+        <div class="va-bank-field" id="va-bank-field">
+          <label class="checkout-label" for="va-bank">Pilih bank Virtual Account</label>
+          <select class="checkout-input" id="va-bank" name="va-bank">
+            <option value="BCA">BCA</option>
+            <option value="BNI">BNI</option>
+            <option value="BRI">BRI</option>
+            <option value="Mandiri">Mandiri</option>
+          </select>
+        </div>
+        <section class="qris-panel" id="qris-panel" aria-label="Kode QRIS SECUTIXE STORE" hidden>
+          <h3>Scan QRIS SECUTIXE STORE</h3>
+          <img src="../assets/qris-secutixe-store.jpeg" alt="Kode QRIS dengan nama merchant SECUTIXE STORE">
+          <p>Masukkan total pesanan secara manual di aplikasi pembayaran. Sebelum membayar, pastikan nama merchant yang muncul adalah <strong>SECUTIXE STORE</strong>.</p>
+          <p class="qris-warning">QR ini membayar ke merchant yang tertera pada gambar dan tidak terhubung otomatis ke RodaRent. Pembayaran tidak diverifikasi oleh website.</p>
+        </section>
+        <p class="demo-notice" id="checkout-database-notice">Pemesanan di website ini masih demo dan tidak dikirim ke rental. Pilihan pembayaran selain QRIS juga belum diproses.</p>
+        <button class="button button-primary checkout-submit" type="submit">Buat ringkasan demo</button>
+      </form>
+    </div>
+    <section class="receipt" id="transaction-result" aria-live="polite" hidden>
+      <div class="receipt-success" aria-hidden="true">✓</div>
+      <h3 id="receipt-heading">Ringkasan pesanan demo</h3>
+      <p class="receipt-reference">Nomor referensi <strong id="receipt-reference"></strong></p>
+      <div class="receipt-status"><span>Status</span><strong id="receipt-status-message"></strong></div>
+      <section class="va-receipt" id="va-receipt" aria-label="Instruksi pembayaran Virtual Account" hidden>
+        <div class="va-demo-label">SIMULASI — BUKAN NOMOR PEMBAYARAN</div>
+        <p class="va-bank-name" id="va-receipt-bank"></p>
+        <span class="va-number-label">Nomor Virtual Account demo</span>
+        <div class="va-number-row">
+          <strong id="va-receipt-number"></strong>
+          <button type="button" class="va-copy-button" id="va-copy-button">Salin</button>
+        </div>
+        <p class="va-unavailable" id="va-unavailable" hidden>Virtual Account sungguhan belum diterbitkan. Hubungkan payment gateway untuk mendapatkan nomor pembayaran resmi.</p>
+        <div class="va-amount"><span>Nominal tagihan</span><strong id="va-receipt-amount"></strong></div>
+        <p class="va-expiry" id="va-receipt-expiry"></p>
+        <p class="qris-warning">Nomor ini dibuat acak untuk demonstrasi, tidak terdaftar di bank, dan tidak dapat digunakan untuk transfer. Pembayaran sungguhan memerlukan Virtual Account dari payment gateway resmi.</p>
+      </section>
+      <dl class="receipt-details">
+        <div><dt>Nama</dt><dd id="receipt-customer"></dd></div>
+        <div><dt>WhatsApp</dt><dd id="receipt-phone"></dd></div>
+        <div><dt>Mobil</dt><dd id="receipt-car"></dd></div>
+        <div><dt>Periode sewa</dt><dd id="receipt-dates"></dd></div>
+        <div><dt>Durasi</dt><dd id="receipt-duration"></dd></div>
+        <div><dt>Metode pembayaran</dt><dd id="receipt-payment"></dd></div>
+        <div><dt>Tarif per hari</dt><dd id="receipt-daily-price"></dd></div>
+        <div class="receipt-total"><dt>Total pesanan</dt><dd id="receipt-total"></dd></div>
+      </dl>
+      <p class="demo-notice" id="receipt-notice">Ringkasan ini hanya untuk demo. Pesanan belum diteruskan ke penyedia rental.</p>
+      <button class="button button-primary checkout-submit" id="receipt-done" type="button">Selesai</button>
+    </section>
+  </dialog>
+
+  <dialog class="image-dialog" id="image-dialog" aria-label="Pratinjau foto mobil">
+    <button class="image-dialog-close" id="image-dialog-close" type="button" aria-label="Tutup pratinjau">&times;</button>
+    <div class="image-dialog-visual">
+      <img id="image-dialog-photo" src="" alt="">
+    </div>
+    <div class="image-dialog-controls" id="image-dialog-controls">
+      <button id="image-dialog-previous" type="button" aria-label="Foto sebelumnya">&lsaquo;</button>
+      <span id="image-dialog-count" aria-live="polite"></span>
+      <button id="image-dialog-next" type="button" aria-label="Foto berikutnya">&rsaquo;</button>
+    </div>
+    <span class="image-dialog-hint" id="image-dialog-hint"></span>
+    <span class="image-dialog-credit" id="image-dialog-credit"></span>
+    <p id="image-dialog-caption"></p>
+  </dialog>
+
+  <footer>
+    <div class="container footer-row">
+      <a class="brand" href="#"><img class="brand-mark" src="../assets/rodarent-logo.png?v=20261028-1" alt="">RodaRent</a>
+      <p>Â© <span id="year"></span> RodaRent. Perjalanan nyaman dimulai di sini.</p>
+      <div class="footer-links"><a href="#armada">Armada</a><a href="#keunggulan">Keunggulan</a><a href="#kontak">Kontak</a><a href="pesanan.html#cek">Cek Pesanan</a></div>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../assets/car-photo-galleries.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/supabase-config.js?v=20261028-1"></script>
+  <script src="../assets/rental-database.js?v=20261028-3"></script>
+  <script src="script.js?v=20261028-6" defer></script>
+</body>
+</html>

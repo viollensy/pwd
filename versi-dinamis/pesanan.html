@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f8f5">
+  <title>Cek Pesanan & Riwayat Rental | RodaRent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261028-5">
+  <style>
+    .orders-main { width: min(1120px, calc(100% - 40px)); margin: 42px auto 70px; }
+    .orders-heading { margin-bottom: 24px; }
+    .orders-heading h1 { margin: 0 0 8px; font: 800 clamp(28px, 5vw, 40px)/1.15 Manrope, sans-serif; letter-spacing: -1.4px; }
+    .orders-heading p, .panel-description { color: var(--muted); line-height: 1.65; }
+    .orders-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+    .orders-panel { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: white; box-shadow: 0 8px 26px #14281e0a; }
+    .orders-panel h2 { margin: 0 0 7px; font: 800 21px Manrope, sans-serif; }
+    .panel-description { margin: 0 0 18px; font-size: 13px; }
+    .orders-form { display: grid; gap: 8px; }
+    .orders-form label { margin-top: 7px; font-size: 12px; font-weight: 700; }
+    .orders-form input { width: 100%; padding: 12px; border: 1px solid #dfe5de; border-radius: 9px; background: #fff; }
+    .orders-form input:focus { outline: 3px solid #176c521a; border-color: var(--green); }
+    .orders-form button { margin-top: 10px; }
+    .service-notice, .orders-message { padding: 12px 14px; border-radius: 10px; font-size: 12px; line-height: 1.6; }
+    .service-notice { margin: 0 0 20px; color: #725722; background: #fff5d9; }
+    .orders-message { margin: 14px 0 0; color: #52605a; background: #f2f5f2; }
+    .orders-message:empty { display: none; }
+    .orders-message[data-kind="error"] { color: #8a2c25; background: #fff0ed; }
+    .orders-message[data-kind="success"] { color: #17593f; background: #eaf5ee; }
+    .lookup-result { margin-top: 16px; }
+    .lookup-card { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfa; }
+    .lookup-card h3 { margin: 0 0 12px; font: 800 17px Manrope, sans-serif; }
+    .lookup-card dl { display: grid; grid-template-columns: minmax(110px, .7fr) 1fr; gap: 9px 14px; margin: 0; font-size: 12px; }
+    .lookup-card dt { color: var(--muted); }
+    .lookup-card dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+    .admin-orders { margin-top: 22px; }
+    .admin-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .admin-toolbar h3 { margin: 0; font: 800 17px Manrope, sans-serif; }
+    .admin-toolbar button, .secondary-button { padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--ink); font-weight: 700; cursor: pointer; }
+    .orders-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+    .orders-table { width: 100%; border-collapse: collapse; white-space: nowrap; font-size: 11px; }
+    .orders-table th, .orders-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+    .orders-table th { color: #52605a; background: #f6f8f5; font-weight: 800; }
+    .orders-table tr:last-child td { border-bottom: 0; }
+    .orders-empty { color: var(--muted); text-align: center !important; }
+    .setup-note { margin-top: 22px; padding: 16px; border: 1px dashed #cbd6cc; border-radius: 12px; color: #52605a; font-size: 12px; line-height: 1.7; }
+    [hidden] { display: none !important; }
+    @media (max-width: 760px) {
+      .orders-main { width: min(100% - 28px, 520px); margin-top: 28px; }
+      .orders-grid { grid-template-columns: 1fr; }
+      .orders-panel { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="RodaRent beranda">
+        <img class="brand-mark" src="../assets/rodarent-logo.png?v=20261028-1" alt="">RodaRent
+      </a>
+      <nav class="nav-links" aria-label="Navigasi">
+        <a href="index.html#armada">Armada</a>
+        <a href="#cek">Cek Pesanan</a>
+        <a href="#admin">Riwayat Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="orders-main">
+    <div class="orders-heading">
+      <h1>Cek pesanan & riwayat rental</h1>
+      <p>Cek status pesanan dengan nomor referensi dan nomor WhatsApp yang digunakan saat memesan.</p>
+    </div>
+    <p class="service-notice" id="database-status" role="status">Memeriksa koneksi database...</p>
+    <div class="orders-grid">
+      <section class="orders-panel" id="cek" aria-labelledby="lookup-title">
+        <h2 id="lookup-title">Cek pesanan</h2>
+        <p class="panel-description">Masukkan nomor referensi dan nomor WhatsApp pelanggan untuk melihat ringkasan status.</p>
+        <form class="orders-form" id="lookup-form">
+          <label for="lookup-reference">Nomor referensi</label>
+          <input id="lookup-reference" name="reference" placeholder="Contoh: RR-ABC123..." autocomplete="off" required>
+          <label for="lookup-phone">Nomor WhatsApp</label>
+          <input id="lookup-phone" name="phone" type="tel" autocomplete="tel" required>
+          <button class="button button-primary" type="submit">Cari pesanan</button>
+        </form>
+        <p class="orders-message" id="lookup-message" role="status" aria-live="polite"></p>
+        <div class="lookup-result" id="lookup-result" aria-live="polite"></div>
+      </section>
+      <section class="orders-panel" id="admin" aria-labelledby="admin-title">
+        <h2 id="admin-title">Riwayat rental (admin)</h2>
+        <p class="panel-description">Login admin untuk melihat riwayat pesanan. Data pelanggan tidak ditampilkan tanpa akses admin.</p>
+        <form class="orders-form" id="admin-login-form">
+          <label for="admin-email">Email admin</label>
+          <input id="admin-email" name="email" type="email" autocomplete="username" required>
+          <label for="admin-password">Password</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+          <button class="button button-primary" type="submit">Login admin</button>
+        </form>
+        <div class="admin-orders" id="admin-orders" hidden>
+          <div class="admin-toolbar">
+            <h3 id="orders-page-label">Riwayat pesanan</h3>
+            <div>
+              <button type="button" id="previous-orders" disabled>Sebelumnya</button>
+              <button type="button" id="next-orders" disabled>Berikutnya</button>
+              <button type="button" id="refresh-orders">Muat ulang</button>
+              <button type="button" id="admin-logout" class="secondary-button">Keluar</button>
+            </div>
+          </div>
+          <div class="orders-table-wrap">
+            <table class="orders-table">
+              <thead><tr><th>Dibuat</th><th>Referensi</th><th>Pelanggan</th><th>Mobil</th><th>Periode</th><th>Durasi</th><th>Tarif / hari</th><th>Total</th><th>Pembayaran</th><th>Status</th></tr></thead>
+              <tbody id="orders-table-body"><tr><td class="orders-empty" colspan="7">Memuat...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <p class="orders-message" id="admin-message" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+    <p class="setup-note">
+      <strong>Setup database diperlukan:</strong> jalankan <code>database/supabase-schema.sql</code> di SQL Editor Supabase,
+      isi URL project dan anon key di <code>assets/supabase-config.js</code>, lalu buat akun admin dan ikuti instruksi promosi admin di bagian akhir SQL.
+      Jangan masukkan service-role key ke website.
+    </p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/supabase-config.js?v=20261028-1"></script>
+  <script src="../assets/rental-database.js?v=20261028-3"></script>
+  <script src="pesanan.js?v=20261028-3"></script>
+</body>
+</html>

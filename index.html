@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f8f5">
+  <meta name="description" content="Pilih versi statis atau dinamis dari website RodaRent.">
+  <title>RodaRent | Pilih Versi Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px 20px; color: #203128; background: #f8f8f5; font-family: "DM Sans", sans-serif; }
+    main { width: min(820px, 100%); }
+    .brand { display: flex; align-items: center; gap: 12px; color: #24724a; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .brand img { width: 44px; height: 44px; object-fit: contain; background-color: #fff; }
+    h1 { margin: 16px 0 10px; font-family: Manrope, sans-serif; font-size: clamp(34px, 6vw, 54px); line-height: 1.1; letter-spacing: -.05em; }
+    .intro { max-width: 600px; color: #65736b; font-size: 17px; line-height: 1.7; }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 34px; }
+    .choice { display: flex; min-height: 235px; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid #e4e9e3; border-radius: 18px; background: #fff; box-shadow: 0 14px 36px #2031280a; }
+    .choice h2 { margin: 0 0 10px; font-family: Manrope, sans-serif; font-size: 22px; }
+    .choice p { margin: 0 0 24px; color: #65736b; line-height: 1.65; }
+    .choice a { margin-top: auto; padding: 12px 17px; border-radius: 9px; color: #fff; background: #24724a; font-weight: 700; text-decoration: none; }
+    .choice a:hover { background: #1b5c3b; }
+    .note { margin-top: 22px; color: #78847d; font-size: 13px; line-height: 1.6; }
+    @media (max-width: 600px) { .choices { grid-template-columns: 1fr; } .choice { min-height: 0; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand"><img src="./assets/rodarent-logo.png?v=20261028-1" alt="">RodaRent</div>
+    <h1>Pilih versi website</h1>
+    <p class="intro">Pilih halaman yang ingin dibuka. Versi statis memakai kode katalog mobil yang diberikan, sedangkan versi dinamis berisi demo rental mobil.</p>
+    <section class="choices" aria-label="Versi website">
+      <article class="choice">
+        <h2>Versi Statis</h2>
+        <p>Katalog mobil dengan pencarian, filter, spesifikasi, dan galeri foto dari beberapa sisi, termasuk interior.</p>
+        <a href="./versi-statis/index.html">Buka versi statis</a>
+      </article>
+      <article class="choice">
+        <h2>Versi Dinamis</h2>
+        <p>Demo rental mobil dengan filter, pencarian, galeri foto, pemesanan, cek pesanan, dan riwayat admin.</p>
+        <a href="./versi-dinamis/index.html">Buka versi dinamis</a>
+      </article>
+    </section>
+    <p class="note"><a href="./versi-dinamis/pesanan.html">Cek status pesanan atau masuk ke riwayat admin</a></p>
+    <p class="note">Cek pesanan dan riwayat online aktif setelah Supabase dikonfigurasi. Pembayaran belum terhubung ke payment gateway.</p>
+  </main>
+</body>
+</html>
